@@ -3,8 +3,10 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
+var path = require("path");
 
 var db = require("./models");
+
 var PORT = 3000;
 var app = express();
 
@@ -13,8 +15,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+//ROUTING EX
+// require("./routes/html-routes")(app);
+
 
 mongoose.connect("mongodb://localhost/mongo-scraper", { useNewUrlParser: true });
+
+app.get("/", function (req, res) {
+    res.render("index");
+})
 
 app.get("/scrape", function(req, res) {
     axios.get("https://www.bbc.co.uk/programmes/p0374bx8").then(function(response) {
