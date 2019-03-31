@@ -1,49 +1,54 @@
 <% include partials/header %>
 
-  <nav class="navbar navbar-expand-lg bg-primary">
-    <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="btn btn-info scrape-new">SCRAPE NEW ARTICLES</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-info clear">CLEAR ARTICLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn nav-link" href="/saved">SAVED ARTICLES</a>
-          </li>
-      </ul>
-    </div>
-  </nav>
-  
-  <div class="jumbotron text-center">
-    <div class="caption">
-      <h1>MONGO SCRAPER</h1>
-    </div>
+<nav class="navbar navbar-expand-lg bg-primary">
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="btn btn-info scrape-new">SCRAPE NEW ARTICLES</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-info clear">CLEAR ARTICLES</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn nav-link" href="/saved">SAVED ARTICLES</a>
+      </li>
+    </ul>
   </div>
+</nav>
 
-
-  <div id="articles">
-      <%=Article[0]._id%>
+<div class="jumbotron text-center">
+  <div class="caption">
+    <h1>MONGO SCRAPER</h1>
   </div>
+</div>
 
-  <div id="notes">
+<%for (var i = 0; i < Article.length; i++){%>
 
-  </div>
+<div class="articles">
 
-  <!-- <div class="container-fluid article-container">
-    <div data-_id="" class="card">
+  <div class="container-fluid article-container">
+    <div data-_id="<%=Article[i]._id%>" class="card card-id">
       <div class="card-header">
         <h3>
-          <a class="article-link" target="_blank" rel="noopener noreferrer" href="">
-
+          <a class="article-link" target="_blank" rel="noopener noreferrer" href="<%=Article[i].link%>">
+            <%=Article[i].title%>
           </a>
           <a class="btn btn-success save">SAVE ARTICLE</a>
+          <a class="btn btn-success comment">LEAVE COMMENT</a>
         </h3>
       </div>
       <div class="card-body">
-
+        <%=Article[i].summary%>
       </div>
-    </div> -->
+    </div>
+  </div>
+
+</div>
+
+<div id="comments">
+
+</div>
+
+<%}%>
 
 <% include partials/footer %>

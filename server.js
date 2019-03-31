@@ -26,9 +26,6 @@ app.set("views", path.join(__dirname, "views"));
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
-// app.get("/", function (req, res) {
-//     res.render("index");
-// })
 
 app.get("/scrape", function(req, res) {
     axios.get("https://www.bbc.co.uk/programmes/p0374bx8").then(function(response) {
