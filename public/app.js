@@ -27,11 +27,7 @@ $(document).ready(function() {
         });
     });
 
-    $(".clear").on("click", clearArticles);
-
-    function clearArticles() {
-        $.get("api/clear").then(function() {
-        article-container.empty();
-        });
-    }
+    $(".clear").on("click", function () {
+       $(".article-container").empty();
+    });
 });
