@@ -29,14 +29,12 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 app.get("/", function(req, res) {
     db.Article.find({})
         .then(function(dbArticle) {
-            // res.json(dbArticle);
             res.render("index", { Article : dbArticle});
         })
         .catch(function(err) {
             res.json(err);
         });
 });
-
 
 app.get("/scrape", function(req, res) {
     axios.get("https://www.bbc.co.uk/programmes/p0374bx8").then(function(response) {
