@@ -1,23 +1,49 @@
 <% include partials/header %>
 
-<ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </li>
-  </ul>
-
-  <div id="wrapper">
-    <div id="articles"></div>
-    <div id="notes"></div>
+  <nav class="navbar navbar-expand-lg bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="btn btn-info scrape-new">SCRAPE NEW ARTICLES</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-info clear">CLEAR ARTICLES</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn nav-link" href="/saved">SAVED ARTICLES</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="jumbotron text-center">
+    <div class="caption">
+      <h1>MONGO SCRAPER</h1>
+    </div>
   </div>
+
+
+  <div id="articles">
+      <%=Article[0]._id%>
+  </div>
+
+  <div id="notes">
+
+  </div>
+
+  <!-- <div class="container-fluid article-container">
+    <div data-_id="" class="card">
+      <div class="card-header">
+        <h3>
+          <a class="article-link" target="_blank" rel="noopener noreferrer" href="">
+
+          </a>
+          <a class="btn btn-success save">SAVE ARTICLE</a>
+        </h3>
+      </div>
+      <div class="card-body">
+
+      </div>
+    </div> -->
 
 <% include partials/footer %>
