@@ -21,12 +21,6 @@ $(document).ready(function() {
         });
     });
 
-    $(".clear").on("click", function () {
-        $.get("/clear").then(function(res) {
-            res.render("clear");
-        });
-    });
-
     $(".save").on("click", function () {
         var articleId = $(".card-id").data("id");
 
@@ -46,5 +40,4 @@ $(document).ready(function() {
         })
 
     });
-
 });

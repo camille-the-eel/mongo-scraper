@@ -5,8 +5,18 @@ var cheerio = require("cheerio");
 
 module.exports = function (app) {
 
-app.get("/", function (req, res) {
-    res.render("index");
+app.get("/", function(req, res) {
+    db.Article.find({})
+        .then(function(dbArticle) {
+            res.render("index", { Article : dbArticle});
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
+});
+
+app.get("/clear", function (req, res) {
+    res.render("clear");
 })
 
 app.get("/", function(req, res) {
