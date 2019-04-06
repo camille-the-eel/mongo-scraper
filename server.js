@@ -15,7 +15,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("./public"));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -35,6 +35,10 @@ app.get("/", function(req, res) {
             res.json(err);
         });
 });
+
+app.get("/clear", function (req, res) {
+    res.render("clear");
+})
 
 app.get("/scrape", function(req, res) {
     axios.get("https://www.bbc.co.uk/programmes/p0374bx8").then(function(response) {

@@ -2,11 +2,11 @@ $(document).ready(function() {
 
     $(document).on("click", ".comment", function() {
         $("#comments").empty();
-        var thisId = $(this).attr("data-id");
+        var commentId = $(this).attr("data-id");
 
         $.ajax({
             method: "GET",
-            url: "/articles/" + thisId
+            url: "/articles/" + commentId
         }).then(function(data) {
             console.log(data);
             $("#comments").append("<h3>" + data.title + "</h3>");
@@ -22,6 +22,29 @@ $(document).ready(function() {
     });
 
     $(".clear").on("click", function () {
-       $(".article-container").empty();
+        $.get("/clear").then(function(res) {
+            res.render("clear");
+        });
     });
+
+    $(".save").on("click", function () {
+        var articleId = $(".card-id").data("id");
+
+        $.ajax({
+            method: "PUT",
+            url: "/articles/" + articleId,
+            data: {
+                title: $(".article-link").text(),
+                link: $(".article-link").attr("href"),
+                summary: $(".summary").text(),
+                saved: true
+            }
+        }).then(function(data) {
+           if (data.saved === true) {
+                console.log("Article Saved: ", data.title);
+           }
+        })
+
+    });
+
 });

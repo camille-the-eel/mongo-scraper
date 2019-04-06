@@ -10,7 +10,7 @@
         <a class="btn btn-info clear">CLEAR ARTICLES</a>
       </li>
       <li class="nav-item">
-        <a class="btn nav-link" href="/saved">SAVED ARTICLES</a>
+        <a class="btn nav-link saved" href="/saved">SAVED ARTICLES</a>
       </li>
     </ul>
   </div>
@@ -22,32 +22,36 @@
   </div>
 </div>
 
-<%for (var i = 0; i < Article.length; i++){%>
+<% if (Article) {%>
 
-<div class="articles">
+  <%for (var i = 0; i < Article.length; i++){%>
 
-  <div class="container-fluid article-container">
-    <div data-_id="<%=Article[i]._id%>" class="card card-id">
-      <div class="card-header">
-        <h3>
-          <a class="article-link" target="_blank" rel="noopener noreferrer" href="<%=Article[i].link%>">
-            <%=Article[i].title%>
-          </a>
-          <a class="btn btn-success save">SAVE ARTICLE</a>
-          <a class="btn btn-success comment">LEAVE COMMENT</a>
-        </h3>
-      </div>
-      <div class="card-body">
-        <%=Article[i].summary%>
+  <div class="articles">
+
+    <div class="container-fluid article-container">
+      <div data-_id="<%=Article[i]._id%>" class="card card-id">
+        <div class="card-header">
+          <h3>
+            <a class="article-link" target="_blank" rel="noopener noreferrer" href="<%=Article[i].link%>">
+              <%=Article[i].title%>
+            </a>
+            <a class="btn btn-success save">SAVE ARTICLE</a>
+            <a class="btn btn-success comment">LEAVE COMMENT</a>
+          </h3>
+        </div>
+        <div class="card-body summary">
+          <%=Article[i].summary%>
+        </div>
       </div>
     </div>
+
   </div>
 
-</div>
+  <div id="comments">
 
-<div id="comments">
+  </div>
 
-</div>
+  <%}%>
 
 <%}%>
 
