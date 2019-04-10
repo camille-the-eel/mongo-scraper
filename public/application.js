@@ -22,11 +22,12 @@ $(document).ready(function() {
     });
 
     $(".save").on("click", function () {
-        var articleId = $(".card-id").data("id");
+        var dataId = $(".card-id").data();
+        var articleId = dataId._id;
 
         $.ajax({
             method: "PUT",
-            url: "/articles/" + articleId,
+            url: "/articles/saved/" + articleId,
             data: {
                 title: $(".article-link").text(),
                 link: $(".article-link").attr("href"),
