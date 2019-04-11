@@ -63,7 +63,6 @@ module.exports = function (app) {
     });
 
     app.put("/articles/saved/:id", function(req, res) {
-
        db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true })
             .then(function(savedArticle) {
                 res.json(savedArticle);
